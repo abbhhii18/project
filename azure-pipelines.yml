@@ -27,9 +27,11 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
-    - task: Docker@2
+    - task: Docker@1
+      displayName: 'Push the Docker image to Dockerhub'
       inputs:
-       containerRegistry: 'hub connection'
-       command: 'buildAndPush'
-       Dockerfile: 'Dockerfile'
-       buildContext:  
+       containerregistrytype: 'Container Registry'
+       dockerRegistryEndpoint: 'Docker Hub'
+       command: 'Push an image'
+       imageName: '$(ImageName)'
+      condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest')) 
