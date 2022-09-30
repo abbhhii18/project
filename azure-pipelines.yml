@@ -34,6 +34,7 @@ stages:
        command: 'buildAndPush'
        Dockerfile: '**/Dockerfile'
 
+- stage: Install Terraform
   - task: TerraformInstaller@0
     inputs:
       terraformVersion: 'latest'
