@@ -33,3 +33,7 @@ stages:
        repository: 'abhi2322/projectt'
        command: 'buildAndPush'
        Dockerfile: '**/Dockerfile'
+
+       - task: TerraformInstaller@0
+         inputs:
+           terraformVersion: 'latest'
