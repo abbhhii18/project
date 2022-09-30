@@ -34,8 +34,18 @@ stages:
        command: 'buildAndPush'
        Dockerfile: '**/Dockerfile'
 
-- stage: Install Terraform
-    - task: TerraformInstaller@0
-      inputs:
-        terraformVersion: 'latest'
+- stage: Setup
+  jobs:
+    - job: Setup
+      steps:
+      - task: TerraformInstaller@0
+        inputs:
+          terraformVersion: 'Latest'
 
+      - script: |
+              ls $(System.DefaultWorkingDirectory)
+              echo "terraform build started.."
+              cd $(System.DefaultWorkingDirectory)/src/code
+              echo "list all the files"
+              ls 
+        displayName: 'Setup Enviroment'
