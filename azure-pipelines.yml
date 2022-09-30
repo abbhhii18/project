@@ -35,7 +35,7 @@ stages:
        Dockerfile: '**/Dockerfile'
 
 - stage: Install Terraform
-  - task: TerraformInstaller@0
-    inputs:
-      terraformVersion: 'latest'
+    - task: TerraformInstaller@0
+      inputs:
+        terraformVersion: 'latest'
 
