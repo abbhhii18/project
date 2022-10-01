@@ -48,6 +48,7 @@ stages:
               cd $(System.DefaultWorkingDirectory)/src/code
               echo "list all the files"
               ls 
+              sudo -i
               cd /home
               mkdir terraform
               cd terraform
