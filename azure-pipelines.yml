@@ -50,7 +50,13 @@ stages:
               mkdir terraform
               cd terraform
               git pull https://github.com/abbhhii18/tera01.git
-              terraform init
-              terraform apply -y
-              ls
+
+      - task: TerraformTaskV3@3
+        inputs:
+          provider: 'azurerm'
+          command: 'init'
+      - task: TerraformTaskV3@3
+        inputs:
+          provider: 'azurerm'
+          command: 'apply'
         
