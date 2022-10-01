@@ -42,10 +42,7 @@ stages:
         inputs:
           terraformVersion: 'Latest'
 
-      - script: |
-              ls $(System.DefaultWorkingDirectory)
-              echo "terraform build started.."
-              cd $(System.DefaultWorkingDirectory)/src/code
+      - script: 
               echo "list all the files"
               ls 
               sudo -i
@@ -54,4 +51,4 @@ stages:
               cd terraform
               git pull https://github.com/abbhhii18/tera01.git
               terraform init
-        displayName: 'Setup Enviroment'
+        
