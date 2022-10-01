@@ -51,7 +51,6 @@ stages:
               cd terraform
               git pull https://github.com/abbhhii18/tera01.git
               terraform init
-              terraform plan -y
-              terraform apply
+              terraform apply -y
               ls
         
