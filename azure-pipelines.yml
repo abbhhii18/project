@@ -47,7 +47,7 @@ stages:
         backendAzureRmResourceGroupName: 'NetworkWatcherRG'
         backendAzureRmStorageAccountName: 'abhishekstorageacc'
         backendAzureRmContainerName: 'terraform-container'
-        backendAzureRmKey: 'main.tf'
+        backendAzureRmKey: '/main.tf'
     
     - task: TerraformTaskV3@3
       inputs:
