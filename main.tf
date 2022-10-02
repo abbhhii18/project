@@ -10,9 +10,9 @@ resource "azurerm_resource_group" "DevOpsGroup" {
 }
 
 resource "azurerm_container_group" "ContainerGrp" {
-  name                = "ContainerGrp"
+  name                = "c1"
   location            = "East US"
-  resource_group_name = "azurerm_resource_group.ContainerGrp"
+  resource_group_name = "azurerm_resource_group.DevOpsGroup.name"
   ip_address_type     = "Public"
   os_type             = "Linux"
 
@@ -23,7 +23,7 @@ resource "azurerm_container_group" "ContainerGrp" {
     memory = "1.5"
 
     ports {
-      port     = 443
+      port     = 80
       protocol = "TCP"
     }
   }
