@@ -34,17 +34,13 @@ stages:
        command: 'buildAndPush'
        Dockerfile: '**/Dockerfile'
 
-- stage: Setup
-  jobs:
-    - job: Setup
-      steps:
-      - task: TerraformInstaller@0
-        inputs:
-          terraformVersion: 'Latest'
+    - task: TerraformInstaller@0
+      inputs:
+        terraformVersion: 'Latest'
 
       
-      - task: TerraformTaskV3@3
-        inputs:
+    - task: TerraformTaskV3@3
+      inputs:
           provider: 'azurerm'
           command: 'init'
           backendServiceArm: 'abhishek-hub'
@@ -53,14 +49,14 @@ stages:
           backendAzureRmContainerName: 'terraform-container'
           backendAzureRmKey: 'tf/terraform.tfstate'
       
-      - task: TerraformTaskV3@3
-        inputs:
+    - task: TerraformTaskV3@3
+      inputs:
           provider: 'azurerm'
           command: 'plan'
           environmentServiceNameAzureRM: 'abhishek-hub'
       
-      - task: TerraformTaskV3@3
-        inputs:
+    - task: TerraformTaskV3@3
+      inputs:
           provider: 'azurerm'
           command: 'apply'
           environmentServiceNameAzureRM: 'abhishek-hub'
