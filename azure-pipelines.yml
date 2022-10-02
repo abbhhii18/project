@@ -33,3 +33,32 @@ stages:
        repository: 'abhi2322/projectt'
        command: 'buildAndPush'
        Dockerfile: '**/Dockerfile'
+
+    - task: TerraformInstaller@0
+      inputs:
+        terraformVersion: 'Latest'
+
+      
+    - task: TerraformTaskV3@3
+      inputs:
+          provider: 'azurerm'
+          command: 'init'
+          backendServiceArm: 'abhishek-hub'
+          backendAzureRmResourceGroupName: 'NetworkWatcherRG'
+          backendAzureRmStorageAccountName: 'abhishekstorageacc'
+          backendAzureRmContainerName: 'terraform-container'
+          backendAzureRmKey: 'tf/main.tf'
+      
+    - task: TerraformTaskV3@3
+      inputs:
+          provider: 'azurerm'
+          command: 'plan'
+          environmentServiceNameAzureRM: 'abhishek-hub'
+      
+    - task: TerraformTaskV3@3
+      inputs:
+          provider: 'azurerm'
+          command: 'apply'
+          environmentServiceNameAzureRM: 'abhishek-hub'
+
+
