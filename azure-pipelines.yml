@@ -34,29 +34,31 @@ stages:
        command: 'buildAndPush'
        Dockerfile: '**/Dockerfile'
 
-- stage: Setup
-  jobs:
-    - job: Setup
-      steps:
-      - task: TerraformInstaller@0
-        inputs:
-          terraformVersion: 'Latest'
 
-      - script: 
-              echo "list all the files"
-              ls 
-              sudo -i
-              cd /home
-              mkdir terraform
-              cd terraform
-              git pull https://github.com/abbhhii18/tera01.git
+    - task: TerraformInstaller@0
+      inputs:
+        terraformVersion: 'latest'
+  
+    - task: TerraformTaskV3@3
+      inputs:
+        provider: 'azurerm'
+        command: 'init'
+        backendServiceArm: 'abhishek-hub'
+        backendAzureRmResourceGroupName: 'NetworkWatcherRG'
+        backendAzureRmStorageAccountName: 'abhishekstorageacc'
+        backendAzureRmContainerName: 'terraform-container'
+        backendAzureRmKey: 'main.tf'
+    
+    - task: TerraformTaskV3@3
+      inputs:
+        provider: 'azurerm'
+        command: 'plan'
+        environmentServiceNameAzureRM: 'abhishek-hub'
+    
+    - task: TerraformTaskV3@3
+      inputs:
+        provider: 'azurerm'
+        command: 'apply'
+        environmentServiceNameAzureRM: 'abhishek-hub'
 
-      - task: TerraformTaskV3@3
-        inputs:
-          provider: 'azurerm'
-          command: 'init'
-      - task: TerraformTaskV3@3
-        inputs:
-          provider: 'azurerm'
-          command: 'apply'
-        
+
