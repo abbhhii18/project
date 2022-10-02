@@ -42,17 +42,7 @@ stages:
         inputs:
           terraformVersion: 'Latest'
 
-      - script: |
-              ls $(System.DefaultWorkingDirectory)
-              echo "terraform build started.."
-              cd $(System.DefaultWorkingDirectory)/src/code
-              echo "list all the files"
-              ls 
-              sudo -i
-              cd /home
-              mkdir terraform
-              cd terraform
-              git pull https://github.com/abbhhii18/tera01.git
+      
       - task: TerraformTaskV3@3
         inputs:
           provider: 'azurerm'
@@ -61,7 +51,7 @@ stages:
           backendAzureRmResourceGroupName: 'NetworkWatcherRG'
           backendAzureRmStorageAccountName: 'abhishekstorageacc'
           backendAzureRmContainerName: 'terraform-container'
-          backendAzureRmKey: 'terraform.tfstate'
+          backendAzureRmKey: 'tf/terraform.tfstate'
       
       - task: TerraformTaskV3@3
         inputs:
