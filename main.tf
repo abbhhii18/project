@@ -4,15 +4,15 @@ provider "azurerm" {
   skip_provider_registration = true
 }
 
-resource "azurerm_resource_group" "DevOpsGroup" {
-  name     = "DevOpsGroup"
+resource "azurerm_resource_group" "DevOpsG" {
+  name     = "project"
   location = "East US"
 }
 
 resource "azurerm_container_group" "ContainerGrp" {
   name                = "c1"
   location            = "East US"
-  resource_group_name = "azurerm_resource_group.DevOpsGroup.name"
+  resource_group_name = "azurerm_resource_group.DevOpsG.name"
   ip_address_type     = "Public"
   os_type             = "Linux"
 
