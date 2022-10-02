@@ -47,7 +47,7 @@ stages:
         backendAzureRmResourceGroupName: 'NetworkWatcherRG'
         backendAzureRmStorageAccountName: 'abhishekstorageacc'
         backendAzureRmContainerName: 'terraform-container'
-        backendAzureRmKey: 'sp=r&st=2022-10-02T05:42:49Z&se=2022-10-02T13:42:49Z&spr=https&sv=2021-06-08&sr=b&sig=Td2y9Vdm6mnoh0%2ByggFcSquSt9rbrMY2y3vkMNyprkM%3D'
+        backendAzureRmKey: 'terraform.tfstate'
     
     - task: TerraformTaskV3@3
       inputs:
