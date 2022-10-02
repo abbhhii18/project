@@ -18,7 +18,7 @@ resource "azurerm_container_group" "example" {
 
   container {
     name   = "hello-world"
-    image  = "abhi2322/projectt:latest"
+    image  = "abhi2322/projectt:289"
     cpu    = "0.5"
     memory = "1.5"
 
