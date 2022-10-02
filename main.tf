@@ -12,7 +12,7 @@ resource "azurerm_resource_group" "DevopsGrp" {
 resource "azurerm_container_group" "ContainerGrp" {
   name                = "ContainerGrp"
   location            = "East US"
-  resource_group_name = azurerm_resource_group.DevopsGrp
+  resource_group_name = hello12
   ip_address_type     = "Public"
   os_type             = "Linux"
 
