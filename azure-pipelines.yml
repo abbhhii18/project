@@ -8,8 +8,8 @@ trigger:
 resources:
 - repo: self
 
-variables:
-  tag: '$(Build.BuildId)'
+#variables:
+#  tag: '$(Build.BuildId)'
 
 stages:
 - stage: Build
@@ -25,8 +25,8 @@ stages:
       inputs:
         command: build
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-        tags: |
-          $(tag)
+        tags: latest
+#          $(tag)
     - task: Docker@2
       inputs:
        containerRegistry: 'hub connection'
