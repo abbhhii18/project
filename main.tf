@@ -4,8 +4,8 @@ provider "azurerm" {
   skip_provider_registration = true
 }
 
-resource "azurerm_resource_group" "DevopsGrp" {
-  name     = "DevOpsGrp"
+resource "azurerm_resource_group" "DevOpsGroup" {
+  name     = "DevOpsGroup"
   location = "East US"
 }
 
