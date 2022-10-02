@@ -4,21 +4,22 @@ provider "azurerm" {
   skip_provider_registration = true
 }
 
-resource "azurerm_resource_group" "DevOpsG" {
-  name     = "project"
-  location = "East US"
+resource "azurerm_resource_group" "example" {
+  name     = "example-resources"
+  location = "West Europe"
 }
 
-resource "azurerm_container_group" "ContainerGrp" {
-  name                = "c1"
-  location            = "East US"
-  resource_group_name = "azurerm_resource_group.DevOpsG.name"
+resource "azurerm_container_group" "example" {
+  name                = "example-continst"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
   ip_address_type     = "Public"
+  dns_name_label      = "aci-label"
   os_type             = "Linux"
 
   container {
     name   = "hello-world"
-    image  = "abhi2322/projectt:225"
+    image  = "abhi2322/projectt:285"
     cpu    = "0.5"
     memory = "1.5"
 
